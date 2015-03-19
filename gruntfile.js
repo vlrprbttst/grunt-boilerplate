@@ -1,4 +1,3 @@
-// This shows a full config file!
 module.exports = function(grunt) {
 
 	grunt.initConfig({
@@ -26,7 +25,7 @@ module.exports = function(grunt) {
 
 			css : {
 				files : ['sass/**/*.scss'],
-				tasks : ['sass', 'autoprefixer'],
+				tasks : ['sass', 'autoprefixer', 'penthouse'],
 				options : {
 					spawn : false,
 				}
@@ -102,13 +101,23 @@ module.exports = function(grunt) {
 			}
 		}, //end of autoprefixer
 
+		penthouse : {
+			extract : {
+				outfile : 'css/critical.css.php',
+				css : 'css/main.css',
+				url : 'http://localhost/grunt-boilerplate',
+				width : 1200,
+				height : 500
+			},
+		}, //end of penthouse
+
 		browserSync : {
 			dev : {
 				bsFiles : {
 					src : ['css/*.css', 'images/*.*', 'js/build/production.min.js', '*.php', 'includes/*.php']
 				},
 				options : {
-					proxy: "localhost/grunt-boilerplate",					
+					proxy : "localhost/grunt-boilerplate",
 					watchTask : true // < VERY important
 				}
 			}
@@ -125,6 +134,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-delete-sync');
+	grunt.loadNpmTasks('grunt-penthouse');
 
 	// define default task
 	grunt.registerTask('default', ["browserSync", "watch"]);

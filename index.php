@@ -7,7 +7,10 @@
 <![endif]-->
 <html lang="en">
 	<head>
-	<?php include 'includes/head.php'; ?>
+		<style type="text/css">
+			<?php include 'css/critical.css.php'; ?>
+		</style>
+		<?php include 'includes/head.php'; ?>
 	</head>
 	
 	<body>
