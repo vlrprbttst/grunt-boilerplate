@@ -2,7 +2,7 @@
 
 Open the terminal at the root of the project and type `npm install`, this will take care of all the dependencies. Once done, type `grunt`
 
-*Warning*
+**Warning**
 
 This is a php project so in the `gruntfile.js` I'm proxying my htdocs xampp folder. Be sure to edit that if your project is somewhere else 
 
@@ -19,6 +19,11 @@ This is a php project so in the `gruntfile.js` I'm proxying my htdocs xampp fold
 			}
 		}
 
+```
+Also consider changing the url line in the penthouse task
+
+```
+url : 'http://localhost/grunt-boilerplate',
 ```
 
 #Gems
