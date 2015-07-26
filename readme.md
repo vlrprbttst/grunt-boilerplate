@@ -1,10 +1,13 @@
-#Instructions
+#Grunt Boilerplate for Web Designers and Front End Developers
 
-Open the terminal at the root of the project and type `npm install`, this will take care of all the dependencies. Once done, type `grunt`
+##Instructions
+
+Open the terminal in the root of the project and type `npm install`, this will take care of all the dependencies. Once done, type `grunt`, a browser window will open with your website running and will watch for changes and live reload accordingly.
 
 **Warning**
 
-This is a php project so in the `gruntfile.js` I'm proxying my htdocs xampp folder. Be sure to edit that if your project is somewhere else 
+This is a php project so in the `gruntfile.js` I'm proxying my htdocs xampp folder.
+Be sure to edit that if your project is somewhere else 
 
 ```
 		browserSync : {
@@ -33,3 +36,7 @@ The gems used in this project are Sass and Compass. If you don't have already in
 `gem install sass` 
 
 `gem install compass`
+
+##Deploying via FTP
+
+Edit the `.ftppass` file with real data and edit the data in the `gruntfile.js` ftpush task. Once done deploy via ftp typing `grunt ftpush`

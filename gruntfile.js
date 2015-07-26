@@ -121,6 +121,22 @@ module.exports = function(grunt) {
 					watchTask : true // < VERY important
 				}
 			}
+		},
+
+		ftpush : {
+			build : {
+				auth : {
+					host : 'ftp.yourwebsite.com',
+					port : 21,
+					authKey : 'key1' //ftp login is in the .ftppass file
+				},
+				src : './', //root
+				dest : '/www', //destination folder
+				exclusions : ['.sass-cache', '.git', 'images/src','node_modules','.gitignore','.ftppass','gruntfile.js','README.md','package.json'], //remember adding '.ftppass' to the exclusions in .gitignore if you are publishing the repo to github
+				// keep : ['blog','cv','projects'], // SUPER IMPORTANT! check what resources should STAY on the server, for example your wordpress installation or other subfolders you use for other projects. else they'll get wiped out
+				simple : false,
+				useList : false
+			}
 		}
 	});
 
@@ -135,6 +151,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-delete-sync');
 	grunt.loadNpmTasks('grunt-penthouse');
+	grunt.loadNpmTasks('grunt-ftpush');
 
 	// define default task
 	grunt.registerTask('default', ["browserSync", "watch"]);
