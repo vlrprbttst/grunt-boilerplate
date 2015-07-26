@@ -1,6 +1,6 @@
 #Grunt Boilerplate for Web Designers and Front End Developers
 
-Read all about this boilerplate [http://valeriopierbattista.com/blog/grunt-boilerplate-for-front-end-developers-and-webdesigners]("in this blog post").
+Read all about this boilerplate [in this blog post](http://valeriopierbattista.com/blog/grunt-boilerplate-for-front-end-developers-and-webdesigners).
 
 ##Instructions
 
