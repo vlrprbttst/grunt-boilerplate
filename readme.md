@@ -1,5 +1,7 @@
 #Grunt Boilerplate for Web Designers and Front End Developers
 
+Read all about this boilerplate [http://valeriopierbattista.com/blog/grunt-boilerplate-for-front-end-developers-and-webdesigners]("in this blog post").
+
 ##Instructions
 
 Open the terminal in the root of the project and type `npm install`, this will take care of all the dependencies. Once done, type `grunt`, a browser window will open with your website running and will watch for changes and live reload accordingly.
