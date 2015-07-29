@@ -4,7 +4,9 @@ Read all about this boilerplate [in this blog post](http://valeriopierbattista.c
 
 ##Instructions
 
-Open the terminal in the root of the project and type `npm install`, this will take care of all the dependencies. Once done, type `grunt`, a browser window will open with your website running and will watch for changes and live reload accordingly.
+Open the terminal in the root of the project and type `npm install`, this will take care of all the dependencies.
+Also run ```npm install grunt-postcss pixrem autoprefixer-core cssnano``` to install the postcss plugins.
+Once done, type `grunt`, a browser window will open with your website running and will watch for changes and live reload accordingly.
 
 **Warning**
 
