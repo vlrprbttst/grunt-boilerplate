@@ -30,6 +30,10 @@ module.exports = function(grunt) {
 					spawn : false,
 				}
 			}, //end of sass watch
+
+			grunt : {
+				files : ['gruntfile.js']
+			}
 		}, //end of watch
 
 		/* ====================================================================================================================================================
@@ -86,14 +90,14 @@ module.exports = function(grunt) {
 			}
 		}, //end of sass
 
-
 		postcss : {
 			options : {
 				map : true,
-				processors : [
-				require('pixrem')(), // add fallbacks for rem units
-		        require('autoprefixer-core')({browsers: 'last 2 version, IE 9'}), // add vendor prefixes. for more: https://github.com/ai/browserslist
-		        require('cssnano')() // minify the result
+				processors : [require('pixrem')(), // add fallbacks for rem units
+				require('autoprefixer-core')({
+					browsers : 'last 2 version, IE 9'
+				}), // add vendor prefixes. for more: https://github.com/ai/browserslist
+				require('cssnano')() // minify the result
 				]
 			},
 			dist : {
@@ -114,7 +118,7 @@ module.exports = function(grunt) {
 		browserSync : {
 			dev : {
 				bsFiles : {
-					src : ['css/*.css', 'images/*.*', 'js/build/production.min.js', '*.php', 'includes/*.php','!.sass-cache']
+					src : ['css/*.css', 'images/*.*', 'js/build/production.min.js', '*.php', 'includes/*.php', '!.sass-cache']
 				},
 				options : {
 					proxy : "localhost/grunt-boilerplate",
