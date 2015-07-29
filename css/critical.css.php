@@ -1,1 +1,1 @@
-body{background:#eee}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}footer{display:block}html{box-sizing:border-box;height:100%}*,:after,:before{box-sizing:inherit}

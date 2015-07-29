@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
 			css : {
 				files : ['sass/**/*.scss'],
-				tasks : ['sass', 'autoprefixer', 'penthouse'],
+				tasks : ['sass', 'postcss', 'penthouse'],
 				options : {
 					spawn : false,
 				}
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 		sass : {
 			dist : {
 				options : {
-					style : 'compressed', //no need for config.rb
+					style : 'nested', //no need for config.rb
 					compass : 'true'
 				},
 				files : {
@@ -86,20 +86,20 @@ module.exports = function(grunt) {
 			}
 		}, //end of sass
 
-		autoprefixer : {
 
+		postcss : {
 			options : {
-
-				browsers : ['> 5%', 'last 2 version', 'ie 8', 'ie 9']
+				map : true,
+				processors : [
+				require('pixrem')(), // add fallbacks for rem units
+		        require('autoprefixer-core')({browsers: 'last 2 version, IE 9'}), // add vendor prefixes. for more: https://github.com/ai/browserslist
+		        require('cssnano')() // minify the result
+				]
 			},
-
 			dist : {
-				files : {
-					'css/main.css' : 'css/main.css'
-				}
-
+				src : 'css/main.css'
 			}
-		}, //end of autoprefixer
+		},
 
 		penthouse : {
 			extract : {
@@ -114,11 +114,11 @@ module.exports = function(grunt) {
 		browserSync : {
 			dev : {
 				bsFiles : {
-					src : ['css/*.css', 'images/*.*', 'js/build/production.min.js', '*.php', 'includes/*.php']
+					src : ['css/*.css', 'images/*.*', 'js/build/production.min.js', '*.php', 'includes/*.php','!.sass-cache']
 				},
 				options : {
 					proxy : "localhost/grunt-boilerplate",
-					watchTask : true // < VERY important
+					watchTask : true
 				}
 			}
 		},
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
 				},
 				src : './', //root
 				dest : '/www', //destination folder
-				exclusions : ['.sass-cache', '.git', 'images/src','node_modules','.gitignore','.ftppass','gruntfile.js','README.md','package.json'], //remember adding '.ftppass' to the exclusions in .gitignore if you are publishing the repo to github
+				exclusions : ['.sass-cache', '.git', 'images/src', 'node_modules', '.gitignore', '.ftppass', 'gruntfile.js', 'README.md', 'package.json'], //remember adding '.ftppass' to the exclusions in .gitignore if you are publishing the repo to github
 				// keep : ['blog','cv','projects'], // SUPER IMPORTANT! check what resources should STAY on the server, for example your wordpress installation or other subfolders you use for other projects. else they'll get wiped out
 				simple : false,
 				useList : false
@@ -146,7 +146,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-delete-sync');
